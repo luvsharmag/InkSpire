@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Link from "next/link";
 import styles from "./navbar.module.css";
@@ -17,16 +17,21 @@ const links = [
   },
   {
     id: 3,
+    title: "Blog",
+    url: "/blog",
+  },
+  {
+    id: 4,
     title: "About",
     url: "/about",
   },
   {
-    id: 4,
+    id: 5,
     title: "Contact",
     url: "/contact",
   },
   {
-    id: 5,
+    id: 6,
     title: "Dashboard",
     url: "/dashboard",
   },
@@ -36,21 +41,20 @@ const Navbar = () => {
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.logo}>
-      InkSpire
+        InkSpire
       </Link>
       <div className={styles.links}>
-        <DarkModeToggle/>
+        <DarkModeToggle />
         {links.map((el, ind) => (
           <Link key={el.id} href={el.url} className={styles.link}>
             {el.title}
           </Link>
         ))}
-        {session.status === "authenticated" && <button
-          className={styles.logout}
-          onClick={signOut}
-        >
-          Logout
-        </button>}
+        {session.status === "authenticated" && (
+          <button className={styles.logout} onClick={signOut}>
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );
