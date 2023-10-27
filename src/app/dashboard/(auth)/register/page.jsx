@@ -13,7 +13,7 @@ const register = () => {
     const email = e.target[1].value;
     const password = e.target[2].value;
     try {
-      const res = await fetch("/api/auth/register", {
+      const res = await fetch(process.env.NEXTAUTH_URL + "/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type":"application/json",             

@@ -62,7 +62,7 @@ const dashboard = () => {
     const content = e.target[3].value;
 
     try {
-      await fetch("/api/posts", {
+      await fetch(process.env.NEXTAUTH_URL + "/api/posts", {
         method: "POST",
         body: JSON.stringify({
           title,
@@ -81,7 +81,7 @@ const dashboard = () => {
   };
   const HandleDelete = async (id)=>{
     try{
-      await fetch(`api/posts/${id}`,{
+      await fetch(process.env.NEXTAUTH_URL + `api/posts/${id}`,{
         method:"DELETE",
       })
       mutuate();
