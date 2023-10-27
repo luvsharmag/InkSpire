@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import Post from "@/models/Post";
+
 
 
 
@@ -14,13 +14,13 @@ const getData = async (id) => {
   return res.json();
 };
 
-export async function generateMetadata({params}){
-  const data = await getData(params.id);
-  return{
-    title:data.title,
-    description:data.desc
-  }
-}
+// export async function generateMetadata({params}){
+//   const data = await getData(params.id);
+//   return{
+//     title:data.title,
+//     description:data.desc
+//   }
+// }
 const blogpost = async ({ params }) => {
   const data = await getData(params.id);
   return (
@@ -31,7 +31,7 @@ const blogpost = async ({ params }) => {
           <p className={styles.desc}>{data.desc}</p>
           <div className={styles.author}>
             <Image
-              src="https://images.pexels.com/photos/3130810/pexels-photo-3130810.jpeg"
+              src={data.image}
               alt=""
               width={40}
               height={40}
@@ -50,7 +50,7 @@ const blogpost = async ({ params }) => {
           />
         </div>
       </div>
-      <div className={styles.bottom}>
+      <div className={styles.content}>
         <p className={styles.text}>
           {data.content}
         </p>
